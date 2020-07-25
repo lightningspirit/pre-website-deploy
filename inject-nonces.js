@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const { program } = require("commander")
-const critical = require("critical")
 const glob = require("glob")
 const cheerio = require("cheerio")
 const fs = require("fs")
@@ -27,15 +26,7 @@ glob("**/*.html", async (er, files) => {
 
   files.map(async (file) => {
     try {
-      const html = await critical.generate({
-        base: ".",
-        src: file,
-        width: 1300,
-        height: 900,
-        inline: true,
-        minify: true,
-      })
-
+      const html = fs.readFileSync(file)
       const $ = cheerio.load(html)
 
       $("head style").after(`<script nonce="${nonce}">window.__webpack_nonce__ = '${nonce}'</script>`);
