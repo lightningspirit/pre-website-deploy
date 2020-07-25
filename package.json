@@ -4,7 +4,7 @@
   "description": "Injects nonces and subresource integrity checks.",
   "bin": {
     "inject-security-attrs": "./inject-nonces.js",
-    "critical-css-csp": "./inject-nonces.js"
+    "critical-css-csp": "./critical-css-deprecated.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
